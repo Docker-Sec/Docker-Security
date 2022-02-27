@@ -1,6 +1,7 @@
 Try Hack Me - The Docker Rodeo:
 https://tryhackme.com/room/dockerrodeo
 
+---
 Other Useful Resources:
 https://docs.docker.com/engine/security/
 https://owasp.org/www-project-docker-top-10/
@@ -12,3 +13,7 @@ https://github.com/krol3/container-security-checklist
 Some links
 https://www.practical-devsecops.com/lesson-4-hacking-containers-like-a-boss/
 https://github.com/Vivek-Naveen-Doc-Sec/Docker-Security. (Docker security methods/commands)
+
+---
+Attack Scenario Context:
+https://devopscube.com/run-docker-in-docker/  (Docker in Docker Use Cases)
