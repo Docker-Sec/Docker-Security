@@ -1,4 +1,3 @@
-Useful Commands to use:
 
 Docker Installation (Ubuntu):
 
