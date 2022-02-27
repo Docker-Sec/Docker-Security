@@ -22,7 +22,8 @@ Private repo to share resources, ideas and plans for INSE6130 Docker Security Pr
 
 #### Attack Scenario 1:
 
-![AttackScenario1](https://user-images.githubusercontent.com/30471250/155865630-4d68e9a3-95ed-4976-b0f8-70b7a99aa90e.jpg)
+![Attack1](https://user-images.githubusercontent.com/30471250/155872803-dde39599-1413-49c2-9a9c-818964e37d61.jpg)
+
 
 #### Defense for Attack Scenario 1 (Tentative):
 
