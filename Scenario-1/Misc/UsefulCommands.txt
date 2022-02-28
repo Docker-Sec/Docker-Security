@@ -1,3 +1,4 @@
+Useful Commands to use:
 
 Docker Installation (Ubuntu):
 
@@ -57,4 +58,23 @@ Running docker container with ssh port accessible
 	
 	sudo docker run -it -d -p 22:22 ubuntu:new
 
+
+Running docker container with ssh port accessible and mounted docker socket
+
+	
+	sudo docker run -it -d -p 22:22 -v /var/run/docker.sock:/var/run/docker.sock ubuntu:now3
+	
+	
+Running docker container with sys-admin capabilities but disabled privy flag
+
+
+	sudo docker run --rm -it -d --cap-add=SYS_ADMIN --security-opt apparmor=unconfined ubuntu:now2 bash
+	
+	
+	
+	
+	
+	
+	
+	
 

