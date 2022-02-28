@@ -3,16 +3,16 @@
 
 1. Install and run Docker environment on the system and start docker registry service (Refer to useful commands)
 
-2. Have a look at ./Images/C[1,2]/Dockerfile to understand structure of the Dockerfile
+2. Have a look at ./Dockerfiles/C[1,2]/Dockerfile to understand structure of the Dockerfile
 
-2. Create Image linux:C1 (for container C1) from Dockerfile and push it to the registry. Navigate to Images/C1/ and run following commands
+2. Create Image linux:C1 (for container C1) from Dockerfile and push it to the registry. Navigate to ./Dockerfiles/C1/ and run following commands
 
         sudo docker build -t linux:C1
         sudo docker tag ubuntu:C1 localhost:5000/linux:C1
         sudo docker push localhost:5000/linux:C1
 		
 		
-3. Similarly, create Image linux:C2 (for container C2) from Dockerfile and push it to the registry. Navigate to Images/C2 and run following commands
+3. Similarly, create Image linux:C2 (for container C2) from Dockerfile and push it to the registry. Navigate to ./Dockerfiles/C2 and run following commands
 
         sudo docker build -t linux:C2
         sudo docker tag ubuntu:C1 localhost:5000/linux:C2
