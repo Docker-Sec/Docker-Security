@@ -4,6 +4,6 @@
 ---
 #### Sub-Tasks:
 
-1. Development of Attack Scenario on Docker Environment.  [Done]
-2. Attack on Scenario 1 to gain access to operating system. [Done]
+1. Development of Attack Scenario on Docker Environment.  [Details](./BrewingScenario1.md)
+2. Attack on Scenario 1 to gain access to operating system. [Details](./StepsToReproduceAttack1.md)
 3. Defense system to protect the system from attacks.
