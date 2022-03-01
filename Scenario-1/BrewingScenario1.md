@@ -8,14 +8,14 @@
 2. Create Image linux:C1 (for container C1) from Dockerfile and push it to the registry. Navigate to ./Dockerfiles/C1/ and run following commands
 
         sudo docker build -t linux:C1
-        sudo docker tag ubuntu:C1 localhost:5000/linux:C1
+        sudo docker tag linux:C1 localhost:5000/linux:C1
         sudo docker push localhost:5000/linux:C1
 		
 		
 3. Similarly, create Image linux:C2 (for container C2) from Dockerfile and push it to the registry. Navigate to ./Dockerfiles/C2 and run following commands
 
         sudo docker build -t linux:C2
-        sudo docker tag ubuntu:C1 localhost:5000/linux:C2
+        sudo docker tag linux:C1 localhost:5000/linux:C2
         sudo docker push localhost:5000/linux:C2
 		
 		
