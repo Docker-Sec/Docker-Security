@@ -1,4 +1,4 @@
-## INSE6130 - Docker Security Project : Steps to Reproduce for Attack 1
+## INSE6130 - Docker Security Project : Steps to Reproduce for Attack 1 [Completed]
 
 * A. Compromising Container C1
 * B. Compromising Container C2
@@ -238,10 +238,15 @@ and BOOM! You got access to the operating system.
 
 ---
 
-References:
+#### References:
 
 1. https://blog.atucom.net/2017/06/smallest-python-bind-shell.html	[Smallest Python Bind Shell]
 2. https://blog.trailofbits.com/2019/07/19/understanding-docker-container-escapes/	[SYS_ADMIN Exploit Breakdown]
 3. https://docs.docker.com/engine/api/sdk/examples/	[Communicating with docker.sock using unix sockets]
 4. https://docs.docker.com/engine/api/v1.41/#tag/Exec	[Creating and starting an exec instance on already running container using HTTP]
 5. https://tryhackme.com/room/dockerrodeo	[Docker Registry, Reverse Engineering docker images]
+
+#### Challenges Faced:
+
+1. There are many articles on the internet to guide one about running a container with docker.sock and unix sockets but there is no mention of running commands on already running containers using docker.sock and unix sockets. Nevertheless, we were able to deduce it from docker engine API documentation.
+2. While gaining access to the operating system using SYS_ADMIN capability, it was hard to find a working exploit with a reverse shell, on the internet. All of the available writeups were limited to running 'ps aux' command to prove the control over OS. We tried to modify the exploit to gain the reverse shell on OS, and we almost managed to run it  however it always ended up with a 'broken pipe' as soon as the first command was ran on the reverse shell. We tried fixing it by changing the payload to a bash script, a python script, a netcat command but no luck. So, we had to go ahead with a 'bind shell' written in python and it worked out.
