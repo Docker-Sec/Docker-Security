@@ -15,7 +15,7 @@
 3. Similarly, create Image linux:C2 (for container C2) from Dockerfile and push it to the registry. Navigate to ./Dockerfiles/C2 and run following commands
 
         sudo docker build -t app-backend:latest .
-        sudo docker tag linux:C1 localhost:5000/app-backend:latest
+        sudo docker tag app-backend:latest localhost:5000/app-backend:latest
         sudo docker push localhost:5000/app-backend:latest
 		
 		
