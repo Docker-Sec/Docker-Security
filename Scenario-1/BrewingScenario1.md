@@ -33,11 +33,11 @@
 	
 6. Now, start the container C1 with port 22 open and docker.sock socket mounted.
 	
-	`sudo docker run -it -d -p 22:22 -v /var/run/docker.sock:/var/run/docker.sock app-frontend:latest`
+	`sudo docker run -it -d -p 22:22 -v /var/run/docker.sock:/var/run/docker.sock localhost:5000/app-frontend:latest`
 	
 7. Also, start the container C2 **without privilege flag** but with SYS_ADMIN capability and apparmor disabled.
 
-	`sudo docker run --rm -it -d --cap-add=SYS_ADMIN --security-opt apparmor=unconfined app-backend:latest bash`
+	`sudo docker run --rm -it -d --cap-add=SYS_ADMIN --security-opt apparmor=unconfined localhost:5000/app-backend:latest bash`
 	
 *Stage for performing Attack1 is ready now. Navigate to StepsToReproduceAttack1.md*
 
