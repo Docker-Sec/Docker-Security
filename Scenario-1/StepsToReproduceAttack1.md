@@ -15,13 +15,13 @@
 
 *A Docker Environment is running in an organization and it has several images and few containers running. It also has a docker registry service running on port 5000 for developers to access the status of images and containers.*
 
-*An attacker (or an adversary) is in the same network as the system on which docker engine is installed (say Ubuntu). S(he) does not have access to the Ubuntu system (its very secure) however S(he) could see that there is a docker environment in the network as docker registry can be accessed on port 5000. The docker registry itself does not pose any serious security risk as it does not allow the user to create, delete or publish images (unless it is writable). The objective of the attacker is to find and exploit the vulnerabilities in the docker environment (if any) and eventually gain access to the underlying Ubuntu operating system.*
+*An attacker (or an adversary) is in the same network as the system on which docker engine is installed (say Ubuntu). S(he) does not have access to the target Ubuntu system (its very secure) however S(he) could see that there is a docker environment in the network as docker registry can be accessed on port 5000. The docker registry itself does not pose any serious security risk as it does not allow the user to create, delete or publish images (unless it is writable). The objective of the attacker is to find and exploit the vulnerabilities in the docker environment (if any) and eventually gain access to the underlying Ubuntu operating system.*
 
 #### Steps:
 
 1. Check running ports on the Ubuntu system by scanning its IP address (the IP Address of Ubuntu system is easy to discover assuming that the attacker is in the same network)
 
-	`nmap -Pn 192.168.2.44 -p-` (assume IP is 192.168.2.44)
+	`nmap -Pn 192.168.2.44 -A -p-` (assume IP is 192.168.2.44)
 	
 You would see that port 22 and port 5000 is open. 
 
@@ -33,13 +33,13 @@ You would see a JSON response listing down all the available images on the regis
 
 3. Each image can have different tags published which can be checked by following URL for each image.
 
-	http://192.168.2.44:5000/v2/image-name/tags/list
+	http://192.168.2.44:5000/v2/app-frontend/tags/list
 	
 Docker registry can also be used to read manifest file of the images. Manifest file basically contains all the information about that image since the image is built. These manifest file can unintentionally be exposing some sensitive information, who knows, lets check.
 
-4. Hit following URL to read manifest file of an image (say my-ubuntu:vuln)
+4. Hit following URL to read manifest file of an image (say app-frontend:latest)
 
-	http://192.168.2.44:5000/v2/my-ubuntu/manifests/vuln
+	http://192.168.2.44:5000/v2/app-frontend/manifests/latest
 	
 A Manifest file will be downloaded. On checking you could see that there is a history section in the file which contains history of all the commands which were ran when the image was being built. On careful observation one could see that it is exposing a string named SECRET, whose value is being set as the password of root user in the very next command. In further commands, the root user is being enabled for login on SSH server which is running on port 22. As an attacker, we got the hint that the value of SECRET is the password for root user on SSH. Also port 22 was discovered during initial port scan.
 
@@ -47,7 +47,7 @@ A Manifest file will be downloaded. On checking you could see that there is a hi
 
 	`ssh root@192.168.2.44`
 	
-However you would see that the system which we have just compromised is not actually Ubuntu system. It is one of the docker container running on that Ubuntu system. Since we got the password from the manifest file of my-ubuntu:vuln image, so we are inside the container of my-ubuntu:vuln. Also it is obvious by looking at the hostname of the system that we are inside some docker container.
+However you would see that the system which we have just compromised is not actually the target system. It is one of the docker container running on that Ubuntu system. Since we got the password from the manifest file of my-ubuntu:vuln image, so we are inside the container of my-ubuntu:vuln. Also it is obvious by looking at the hostname of the system that we are inside some docker container.
 
 So, Container C1 is compromised.
 
