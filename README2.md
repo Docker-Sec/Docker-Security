@@ -13,6 +13,3 @@ Attacker gains the access to docker enginee by exploting a vulnerability(docker 
 
 Part 4:
 Attacker tries to access the container hosting database to get sensitive info
-
-
-sas-gad@encs.concordia.ca
