@@ -32,12 +32,15 @@ Private repo to share resources, ideas and plans for INSE6130 Docker Security Pr
 3. Implement python script to detect (and generate alert) if any of the docker containers is running with unnecessary capabilities which can be abused by an adversary.
 4. Implement a python script to generate alert when someone logins via SSH to docker container from unidentified IP address. (Bonus)
 
-#### Attack Scenario 2
+--------------------------------------
+
+#### Attack Scenario 2:
 
 ![Attack2](https://user-images.githubusercontent.com/30471250/158394824-8e08d380-17cd-4924-ba79-178240b9920b.jpg)
 
+#### Defense for Attack Scenario 1 (TBD):
+...
 --------------------------------------
-
 #### Resources:
 
 links.txt : URLs for docker security articles, medium blogs and guides.
