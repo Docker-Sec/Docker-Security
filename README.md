@@ -24,6 +24,7 @@ Private repo to share resources, ideas and plans for INSE6130 Docker Security Pr
 
 ![Attack1](https://user-images.githubusercontent.com/30471250/155872803-dde39599-1413-49c2-9a9c-818964e37d61.jpg)
 
+#### Cloned image: 
 
 #### Defense for Attack Scenario 1 (Tentative):
 
