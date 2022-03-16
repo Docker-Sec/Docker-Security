@@ -25,7 +25,7 @@ As mentioned in https://www.cvedetails.com/cve/CVE-2019-5736/
         sudo echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
         sudo apt-get update
   
-     c. Now, install docker-ce version 18.09.0~3-0~ubuntu-bionic by running following command. This will install Docker Engine v18.09.0
+     c. Now, install docker-ce version 18.09.0\~3-0~ubuntu-bionic by running following command. This will install Docker Engine v18.09.0
 	
         sudo apt install docker-ce=5:18.09.0~3-0~ubuntu-bionic
 		
