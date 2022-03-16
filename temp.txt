@@ -1,0 +1,31 @@
+Attack Scenario 1:
+
+Vulnerabilities:
+
+Unprotected Docker registry service
+Sensitive information disclosure in image manifests
+Abusing exposed docker socket inside container (docker.sock)
+Abusing SYS_ADMIN linux capability inside container
+
+Sub-Tasks:
+
+Reading about different known vulnerabilities and misconfigurations in Docker environment.	[Completed]
+Designing Attack Scenario 1 by chaining different vulnerabilities as per real world context.	[Completed]
+Prerequisites for Attack Scenario 1 (Installing specific versions and implementing misconfigurations).	[Completed]
+Performing attack on the environment including initial compromise, pivoting to other containers, docker escape, host OS compromise.	[Completed]
+Documentation of development of Attack Scenario and attack steps on common github repo.	[Completed]
+
+
+Attack Scenario 2:
+
+Vulnerabilities:
+
+Unprotected Docker registry service
+CVE-2019-5736 (runC docker escape exploit)
+
+Sub-Tasks:
+
+Designing Attack Scenario 2 by chaining a known vulnerability (CVE-2019-5736) and unprotected registry service.	[Completed]
+Figuring out pre-requisites and compatibility of different docker components' versions (Docker Engine, Docker Client, containerd, runc) required for the implementation of runC vulnerability. [Completed]
+Implementation of Attack Scenario 2.
+Documentation of Attack Scenario 2.
