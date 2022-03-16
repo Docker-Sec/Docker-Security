@@ -43,9 +43,7 @@ As mentioned in https://www.cvedetails.com/cve/CVE-2019-5736/
        sudo docker version #for Docker client and Docker Engine
        sudo runc -v
 
-2. Start docker registry service and host two docker images (an app-server and a database) of a web-application that prints credit score when certain inputs are provided. Start the container for both of the images. The web application with an interface and a database (containing credit information) is up and running now.
-
-Time for the attack... 
+2. Start docker registry service and host two docker images (an app-server and a database) of a web-application that prints credit score when certain inputs are provided. Start the container for both of the images. The web application with an interface and a database (containing credit information) is up and running now.  **[To be implemented...]**
 
 ---
 
@@ -54,4 +52,3 @@ Time for the attack...
 1. https://www.cvedetails.com/cve/CVE-2019-5736/
 2. https://unit42.paloaltonetworks.com/breaking-docker-via-runc-explaining-cve-2019-5736/
 
----
