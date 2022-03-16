@@ -41,8 +41,6 @@
 	
 *Stage for performing Attack1 is ready now. Navigate to StepsToReproduceAttack1.md*
 
-#### Download Image for Attack1 (OVA file): https://drive.google.com/file/d/1Jx_fU41ISp2n6Yk5FmAzC_r0vlZFz-Sg/view?usp=sharing
-
 #### References:
 
 1. https://docs.docker.com/desktop/
