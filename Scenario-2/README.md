@@ -4,9 +4,9 @@
 
 #### Sub-Tasks:
 
-Development of Attack Scenario on Docker Environment. Details(./BrewingScenario2.md)
+Development of Attack Scenario on Docker Environment. [Details](./BrewingScenario2.md)
 
-Attack on Scenario 2 to gain access to the database container. Details(./StepsToReproduceAttack2.md)
+Attack on Scenario 2 to gain access to the database container. [Details](./StepsToReproduceAttack2.md)
 
 Defense system to protect the system from attacks.
 
