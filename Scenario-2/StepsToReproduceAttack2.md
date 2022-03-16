@@ -19,7 +19,7 @@
 
 Create a malicious image with runC exploit and explain the code (Refer https://github.com/twistlock/RunC-CVE-2019-5736)
 
-**[To be implented and steps to be explained...]**
+**[To be implemented and steps to be explained...]**
 
 ---
 
@@ -34,7 +34,7 @@ Create a malicious image with runC exploit and explain the code (Refer https://g
 Push the image into the registry and re-start the container as a legitimate user. 
 runC exploit will execute and attacker will get access to host OS.
 
-**[To be implented and steps to be explained...]**
+**[To be implemented and steps to be explained...]**
 
 
 -----
@@ -45,7 +45,7 @@ runC exploit will execute and attacker will get access to host OS.
 
 Since the attacker has access to host OS, S(he) can easily read information for 'database' container and exfiltrates sensitive information.
 
-**[To be implented and steps to be explained...]**
+**[To be implemented and steps to be explained...]**
 
 ---
 
