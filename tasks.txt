@@ -17,7 +17,7 @@ DockerSecurity Project - Security Application Tasks:
 12. Check how to implement IP Address whilelisting on SSH login. Write a python script to automate whitelisting of IP addresses for SSH login on docker containers.
 13. Check how to read files inside docker containers using 'Docker SDK for Python'. Write python script to check if 'docker.sock' file is present inside any running container.
 14. Check how to check the capabilities of running containers (using capsh --print command) and write a python script to check if any abusable capability is present inside running containers. (Refer https://www.hackitude.in/docker-security/container-breakouts/abusing-capabilities/)
-15. Check how to check if Docker registry is protected by authentication ot not. Write a python script to detect the same and if possible,  implement authentication using the same python script only.
+15. Check how to check if Docker registry is protected by authentication or not. Write a python script to detect the same and if possible,  implement authentication using the same python script only.
 16. Check how to implement image signature verification in docker environment. Write a python script to detect if image signature does not match.
 17. Check if the system is using latest docker environment and write the python script or use any existing tool to list the security vulnerabilities present on the current running version of the docker environment.
 18. DockerSecurity Project - Report and Presentation
