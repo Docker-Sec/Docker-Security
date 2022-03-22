@@ -1,0 +1,23 @@
+DockerSecurity Project - Attack Scenarios Tasks:
+
+1. Attack 1 Planning [Completed]
+2. Attack 1 Development [Completed]
+3. Attack 1 Implementation [Completed]
+4. Attack 1 Documentation [Completed]
+5. Attack 1 Final Execution
+6. Attack 2 Planning [Completed]
+7. Attack 2 Development [Completed]
+8. Attack 2 Implementation [In progress]
+9. Attack 2 Documentation [In progress]
+10. Attack 2 Final Execution
+
+DockerSecurity Project - Security Application Tasks:
+
+11. Write a python script to automatically read and highlight sensitive information in image manifests from docker registry. [In Progress]
+12. Check how to implement IP Address whilelisting on SSH login. Write a python script to automate whitelisting of IP addresses for SSH login on docker containers.
+13. Check how to read files inside docker containers using 'Docker SDK for Python'. Write python script to check if 'docker.sock' file is present inside any running container.
+14. Check how to check the capabilities of running containers (using capsh --print command) and write a python script to check if any abusable capability is present inside running containers. (Refer https://www.hackitude.in/docker-security/container-breakouts/abusing-capabilities/)
+15. Check how to check if Docker registry is protected by authentication ot not. Write a python script to detect the same and if possible,  implement authentication using the same python script only.
+16. Check how to implement image signature verification in docker environment. Write a python script to detect if image signature does not match.
+17. Check if the system is using latest docker environment and write the python script or use any existing tool to list the security vulnerabilities present on the current running version of the docker environment.
+18. DockerSecurity Project - Report and Presentation
