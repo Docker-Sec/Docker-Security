@@ -23,6 +23,11 @@ List containers:
 Setting up local Docker Registry:
 
 	sudo docker pull registry
+	
+Add localhost link to insecure registry url in /etc/docker/daemon.json
+
+	sudo echo '{"insecure-registries" : ["localhost:5000"]}' > /etc/docker/daemon.json
+
 	sudo docker run -d -p 5000:5000 --restart=always --name registry registry:latest
 
 Hosting a docker image:
