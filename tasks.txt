@@ -12,6 +12,7 @@ DockerSecurity Project - Attack Scenarios Tasks:
 10. Attack 2 Final Execution
 
 DockerSecurity Project - Security Application Tasks:
+(https://book.hacktricks.xyz/linux-unix/privilege-escalation/docker-breakout)
 
 11. Write a python script to automatically read and highlight sensitive information in image manifests from docker registry. [In Progress]
 12. Check how to implement IP Address whilelisting on SSH login. Write a python script to automate whitelisting of IP addresses for SSH login on docker containers.
