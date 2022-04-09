@@ -73,3 +73,8 @@ Running docker container with sys-admin capabilities but disabled privy flag
 
 	sudo docker run --rm -it -d --cap-add=SYS_ADMIN --security-opt apparmor=unconfined ubuntu:now2 bash
 	
+To import docker in python3
+1. sudo apt install python3-pip
+--- will get an error : so use this command -> sudo apt install python3-pip --fix-missing.
+2. pip install docker.
+	
