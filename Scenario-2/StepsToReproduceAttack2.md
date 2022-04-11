@@ -62,8 +62,21 @@ Since the attacker has access to host OS, S(he) can easily read information for 
       
       `sudo docker ps`
 
-2. 
+2. Attack a process to the container having database
 
+      `sudo docker exec <ContainerID> bash`
+      
+3. Connect to database and exfiltrate the data
+
+      `mysql -u root -p`
+      
+      `show databases;`
+      
+      `use userdata;`
+      
+      `show tables;`
+      
+      `select * from creditdata;`
 ---
 
 #### References:
