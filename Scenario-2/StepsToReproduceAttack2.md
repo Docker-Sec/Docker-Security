@@ -19,7 +19,24 @@
 
 Create a malicious image with runC exploit and explain the code (Refer https://github.com/twistlock/RunC-CVE-2019-5736)
 
-**[To be implemented and steps to be explained...]**
+1. Change IP address to that of Kali system in new_runc file
+2. Build an image from Dockerfile
+
+      `sudo docker build -t app-creditscore:latest .`
+3. Tag the image 
+
+      `sudo docker tag app-creditscore:latest localhost:5000/app-creditscore:latest`      
+
+4. Push the image to remote registry
+      
+      `sudo docker push localhost:5000/app-creditscore:latest`
+      
+5. Now pull the image and run the container (as a legitimate user)
+
+      `sudo docker pull localhost:5000/app-creditscore:latest`
+      `sudo docker run -itd localhost:5000/app-creditscore:latest`
+      
+6. The attacker will recieve the reverse shell on Kali system and the first container is compromised.
 
 ---
 
@@ -29,23 +46,23 @@ Create a malicious image with runC exploit and explain the code (Refer https://g
 
 *Malicious image of app-server with runC exploit has been built. As an attacker this image can be pushed into unprotected docker registry with latest tag. When a legitimate user of the system will run app-server container, the docker engine will pull the latest (and unknowingly malicious) image from the registry and start the container. The runC exploit will execute and land the attacker with the reverse shell from the underlying operating system*
 
+Since the attacker has access to host OS, S(he) can easily read information for 'database' container and exfiltrates sensitive information.
+
 #### Steps:
 
 Push the image into the registry and re-start the container as a legitimate user. 
 runC exploit will execute and attacker will get access to host OS.
-
-**[To be implemented and steps to be explained...]**
-
-
------
-
-#### C. Comprimising Underlying OS:
-
-#### Steps:
-
 Since the attacker has access to host OS, S(he) can easily read information for 'database' container and exfiltrates sensitive information.
 
 **[To be implemented and steps to be explained...]**
+
+Since the attacker has access to host OS, S(he) can easily read information for 'database' container and exfiltrates sensitive information.
+
+1. List the running containers
+      
+      `sudo docker ps`
+
+2. 
 
 ---
 
