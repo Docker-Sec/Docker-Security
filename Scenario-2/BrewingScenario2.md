@@ -43,7 +43,12 @@ As mentioned in https://www.cvedetails.com/cve/CVE-2019-5736/
        sudo docker version #for Docker client and Docker Engine
        sudo runc -v
 
-2. Start docker registry service and host two docker images (an app-server and a database) of a web-application that prints credit score when certain inputs are provided. Start the container for both of the images. The web application with an interface and a database (containing credit information) is up and running now.  **[To be implemented...]**
+2. Start docker registry service and host two docker images (an app-server and a database) of a web-application that prints credit score when certain inputs are provided. Start the container for both of the images. The web application with an interface and a database (containing credit information) is up and running now.  **
+
+a. `sudo docker exec $(sudo docker run -itd -p 80:80 --restart=always localhost:5000/app-creditscore:latest) service apache2 start`
+
+b. `sudo docker run -itd --restart=always localhost:5000/db-creditscore:updated`
+
 
 ---
 
