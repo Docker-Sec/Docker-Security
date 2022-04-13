@@ -1,0 +1,20 @@
+Security Application Scripts:
+
+	Image Manifest Scanner		[Detection]
+	Capabilities Checker		[Detection & Prevention]
+	Docker Socket Detector		[Detection]
+	Signature Implementation	[Prevention]
+	Registry Authentication 	[Prevention]
+	IP Based filtering			[Prevention]
+
+Vulnerabilities in Attack Scenarios:
+
+	Unprotected Docker Registry
+	Sensitive Information Leakage in Image Manifest
+	Docker Socket Mounted inside Docker Container
+	Excessive Capabilities
+
+	Unprotected/Writable Docker Registry
+	Components with Known Vulnerabilities (CVE-2019-5736)
+	Missing Signature Verification
+
