@@ -54,7 +54,6 @@ Push the image into the registry and re-start the container as a legitimate user
 runC exploit will execute and attacker will get access to host OS.
 Since the attacker has access to host OS, S(he) can easily read information for 'database' container and exfiltrates sensitive information.
 
-**[To be implemented and steps to be explained...]**
 
 Since the attacker has access to host OS, S(he) can easily read information for 'database' container and exfiltrates sensitive information.
 
