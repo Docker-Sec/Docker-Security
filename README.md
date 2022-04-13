@@ -4,19 +4,14 @@ Private repo to share resources, ideas and plans for INSE6130 Docker Security Pr
 
 #### Team Members:
 
-##### Attackers:
-
 1. Mohit Balu 
-2. Bikramjeet Singh
-3. Nithya Sri Bommakanti
-4. Harpreet Kaur
-
-##### Defenders:
-
-5. Milanpreet Kaur
-6. Gouresh Chauhan
-7. Rabiatou Oubbo Modi
-8. Srividya Poshala
+2. Milanpreet Kaur
+3. Bikramjeet Singh
+4. Nithya Sri Bommakanti
+5. Gouresh Chauhan
+6. Srividya Poshala
+7. Harpreet Kaur
+8. Rabiatou Oubbo Modi
 
 --------------------------------------
 
