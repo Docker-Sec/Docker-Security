@@ -1,17 +1,5 @@
 # INSE 6130 - Docker Security
 
-Private repo to share resources, ideas and plans for INSE6130 Docker Security Project.
-
-#### Team Members:
-
-1. Mohit Balu 
-2. Milanpreet Kaur
-3. Bikramjeet Singh
-4. Nithya Sri Bommakanti
-5. Gouresh Chauhan
-6. Srividya Poshala
-7. Harpreet Kaur
-8. Rabiatou Oubbo Modi
 
 --------------------------------------
 
