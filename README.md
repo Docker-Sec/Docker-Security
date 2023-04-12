@@ -1,4 +1,4 @@
-# INSE 6130 - Docker Security
+#Docker Security
 
 
 --------------------------------------
